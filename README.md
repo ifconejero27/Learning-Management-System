@@ -110,33 +110,3 @@ Announcements can be created and displayed based on the intended audience and ac
 ### Persistent Login
 
 The system maintains the user's login session through browser `localStorage` until the user logs out.
-
----
-
-## Project Structure
-
-```text
-University-LMS/
-│
-├── log-in-page.html
-│
-├── 01-html/
-│   ├── admin-dashboard.html
-│   ├── faculty-dashboard.html
-│   ├── student-dashboard.html
-│   └── register.html
-│
-├── 02-css/
-│   ├── login.css
-│   ├── admin-dashboard.css
-│   ├── faculty-dashboard.css
-│   └── student-dashboard.css
-│
-├── 03-js/
-│   ├── log-in-page.js
-│   ├── admin-dashboard.js
-│   ├── faculty-dashboard.js
-│   └── student-dashboard.js
-│
-└── assets/
-    └── lms-preview.png
