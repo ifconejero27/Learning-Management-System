@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../02-css/admin-dashboard.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="../03-js/admin-dashboard.js" defer></script>
+  </head>
+
+  <body>
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>LMS</h2>
+        <span>Learning Management System</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          Dashboard
+        </a>
+
+        <a href="#users" class="nav-item" data-section="users"> Users </a>
+
+        <a href="#departments" class="nav-item" data-section="departments">
+          Departments
+        </a>
+
+        <a href="#courses" class="nav-item" data-section="courses"> Courses </a>
+
+        <a href="#sections" class="nav-item" data-section="sections">
+          Sections
+        </a>
+
+        <a href="#subjects" class="nav-item" data-section="subjects">
+          Subjects
+        </a>
+
+        <a href="#enrollment" class="nav-item" data-section="enrollment">
+          Enrollment
+        </a>
+
+        <a href="#schedules" class="nav-item" data-section="schedules">
+          Schedules
+        </a>
+
+        <a href="#reports" class="nav-item" data-section="reports"> Reports </a>
+
+        <a href="#announcements" class="nav-item" data-section="announcements">
+          Announcements
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="#" class="nav-item" id="logoutButton"> Logout </a>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="page-title">
+          <h1>Admin Dashboard</h1>
+          <p>Manage and monitor your LMS.</p>
+        </div>
+
+        <div class="profile">
+          <div class="profile-info">
+            <strong id="adminName"> Administrator </strong>
+
+            <span> Administrator </span>
+          </div>
+
+          <div class="profile-avatar" id="adminAvatar">AD</div>
+        </div>
+      </header>
+
+      <!-- DASHBOARD -->
+
+      <section id="dashboard" class="page-section active-section">
+        <section class="welcome-section">
+          <h2>Welcome back, Admin!</h2>
+
+          <p>Here's an overview of your Learning Management System.</p>
+        </section>
+
+        <section class="dashboard-cards">
+          <div class="dashboard-card">
+            <span class="card-title"> Total Users </span>
+
+            <h3 id="totalUsers">0</h3>
+
+            <p>Registered accounts</p>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Students </span>
+
+            <h3 id="totalStudents">0</h3>
+
+            <p>Registered students</p>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Faculty </span>
+
+            <h3 id="totalFaculty">0</h3>
+
+            <p>Registered faculty</p>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Courses </span>
+
+            <h3 id="totalCourses">0</h3>
+
+            <p>Available courses</p>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Departments </span>
+
+            <h3 id="totalDepartments">0</h3>
+
+            <p>Academic departments</p>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Sections </span>
+
+            <h3 id="totalSections">0</h3>
+
+            <p>Active sections</p>
+          </div>
+        </section>
+
+        <section class="dashboard-grid">
+          <div class="dashboard-section">
+            <div class="section-header">
+              <div>
+                <h2>Recent Users</h2>
+
+                <p>Recently registered accounts</p>
+              </div>
+            </div>
+
+            <div id="dashboardUserList"></div>
+          </div>
+
+          <div class="dashboard-section">
+            <div class="section-header">
+              <div>
+                <h2>Courses</h2>
+
+                <p>Recently added courses</p>
+              </div>
+            </div>
+
+            <div id="dashboardCourseList"></div>
+          </div>
+        </section>
+      </section>
+
+      <!-- USERS -->
+
+      <section id="users" class="page-section">
+        <div class="section-title">
+          <h2>Users</h2>
+
+          <p>
+            View all registered students, faculty members and administrators.
+          </p>
+        </div>
+
+        <div class="dashboard-section" id="userList"></div>
+      </section>
+
+      <!-- DEPARTMENTS -->
+
+      <section id="departments" class="page-section">
+        <div class="section-title">
+          <h2>Departments</h2>
+
+          <p>Create and manage academic departments.</p>
+        </div>
+
+        <div class="form-section">
+          <h3>Add Department</h3>
+
+          <form id="departmentForm">
+            <input
+              type="text"
+              id="departmentName"
+              placeholder="Department Name"
+              required
+            />
+
+            <input
+              type="text"
+              id="departmentCode"
+              placeholder="Department Code"
+            />
+
+            <button type="submit">Add Department</button>
+          </form>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>Departments</h2>
+
+              <p>Existing departments</p>
+            </div>
+          </div>
+
+          <div id="departmentList"></div>
+        </div>
+      </section>
+
+      <!-- COURSES -->
+
+      <section id="courses" class="page-section">
+        <div class="section-title">
+          <h2>Courses</h2>
+
+          <p>Manage college degree programs.</p>
+        </div>
+
+        <div class="form-section">
+          <h3>Add Course</h3>
+
+          <form id="courseForm">
+            <input
+              type="text"
+              id="courseName"
+              placeholder="Course Name"
+              required
+            />
+
+            <input type="text" id="courseCode" placeholder="Course Code" />
+
+            <select id="courseDepartment" required>
+              <option value="">Select Department</option>
+            </select>
+
+            <button type="submit">Add Course</button>
+          </form>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>College Courses</h2>
+
+              <p>Degree programs by department</p>
+            </div>
+          </div>
+
+          <div id="courseList"></div>
+        </div>
+      </section>
+
+      <!-- SECTIONS -->
+
+      <section id="sections" class="page-section">
+        <div class="section-title">
+          <h2>Sections</h2>
+
+          <p>Create year levels and class sections under each course.</p>
+        </div>
+
+        <div class="form-section">
+          <h3>Add Section</h3>
+
+          <form id="sectionForm">
+            <select id="sectionCourse" required>
+              <option value="">Select Course</option>
+            </select>
+
+            <input
+              type="text"
+              id="yearLevel"
+              placeholder="Year Level e.g. 1st Year"
+              required
+            />
+
+            <input
+              type="text"
+              id="sectionName"
+              placeholder="Section e.g. A"
+              required
+            />
+
+            <button type="submit">Add Section</button>
+          </form>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>Class Sections</h2>
+
+              <p>Sections under each course</p>
+            </div>
+          </div>
+
+          <div id="sectionList"></div>
+        </div>
+      </section>
+
+      <!-- SUBJECTS -->
+
+      <section id="subjects" class="page-section">
+        <div class="section-title">
+          <h2>Subjects</h2>
+
+          <p>
+            Manage the master subject catalog and assign subjects to sections.
+          </p>
+        </div>
+
+        <!-- MASTER SUBJECT -->
+
+        <div class="form-section">
+          <h3>Add Subject to Catalog</h3>
+
+          <p class="form-description">
+            Create the subject once. You can assign it to multiple sections
+            later.
+          </p>
+
+          <form id="subjectForm">
+            <input
+              type="text"
+              id="subjectCode"
+              placeholder="Subject Code e.g. IT101"
+              required
+            />
+
+            <input
+              type="text"
+              id="subjectName"
+              placeholder="Subject Name"
+              required
+            />
+
+            <input
+              type="number"
+              id="subjectUnits"
+              placeholder="Units"
+              min="1"
+              required
+            />
+
+            <button type="submit">Add Subject</button>
+          </form>
+        </div>
+
+        <!-- SUBJECT CATALOG -->
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>Subject Catalog</h2>
+
+              <p>Master list of subjects</p>
+            </div>
+          </div>
+
+          <div id="subjectCatalogList"></div>
+        </div>
+
+        <!-- ASSIGN SUBJECT -->
+
+        <div class="form-section">
+          <h3>Add Subject to Section</h3>
+
+          <p class="form-description">
+            Select an existing subject and assign it to a specific section.
+          </p>
+
+          <form id="sectionSubjectForm">
+            <select id="sectionSubjectSection" required>
+              <option value="">Select Section</option>
+            </select>
+
+            <select id="sectionSubjectSubject" required>
+              <option value="">Select Subject</option>
+            </select>
+
+            <button type="submit">Add Subject to Section</button>
+          </form>
+        </div>
+
+        <!-- SECTION SUBJECTS -->
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>Section Subjects</h2>
+
+              <p>Subjects assigned to class sections</p>
+            </div>
+          </div>
+
+          <div id="sectionSubjectList"></div>
+        </div>
+      </section>
+
+      <!-- ENROLLMENT -->
+
+      <section id="enrollment" class="page-section">
+        <div class="section-title">
+          <h2>Student Enrollment</h2>
+
+          <p>
+            Enroll students into their department, course, year level and
+            section.
+          </p>
+        </div>
+
+        <div class="form-section">
+          <h3>Enroll Student</h3>
+
+          <form id="enrollmentForm">
+            <select id="studentSelect" required>
+              <option value="">Select Student</option>
+            </select>
+
+            <select id="enrollmentDepartment" required>
+              <option value="">Select Department</option>
+            </select>
+
+            <select id="enrollmentCourse" required>
+              <option value="">Select Course</option>
+            </select>
+
+            <select id="enrollmentSection" required>
+              <option value="">Select Section</option>
+            </select>
+
+            <button type="submit">Enroll Student</button>
+          </form>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>Enrolled Students</h2>
+
+              <p>Current student enrollments</p>
+            </div>
+          </div>
+
+          <div id="enrollmentList"></div>
+        </div>
+      </section>
+
+      <!-- SCHEDULES -->
+
+      <section id="schedules" class="page-section">
+        <div class="section-title">
+          <h2>Faculty Schedules</h2>
+
+          <p>Assign faculty members to subjects and create class schedules.</p>
+        </div>
+
+        <div class="form-section">
+          <h3>Schedule Subject</h3>
+
+          <form id="scheduleForm">
+            <select id="scheduleSection" required>
+              <option value="">Select Section</option>
+            </select>
+
+            <select id="scheduleSubject" required>
+              <option value="">Select Subject</option>
+            </select>
+
+            <select id="scheduleFaculty" required>
+              <option value="">Select Faculty</option>
+            </select>
+
+            <select id="scheduleDay" required>
+              <option value="">Select Day</option>
+
+              <option value="Monday">Monday</option>
+
+              <option value="Tuesday">Tuesday</option>
+
+              <option value="Wednesday">Wednesday</option>
+
+              <option value="Thursday">Thursday</option>
+
+              <option value="Friday">Friday</option>
+
+              <option value="Saturday">Saturday</option>
+            </select>
+
+            <div class="time-fields">
+              <div>
+                <label for="startTime"> Start Time </label>
+
+                <input type="time" id="startTime" required />
+              </div>
+
+              <div>
+                <label for="endTime"> End Time </label>
+
+                <input type="time" id="endTime" required />
+              </div>
+            </div>
+
+            <button type="submit">Add Schedule</button>
+          </form>
+        </div>
+
+        <div class="dashboard-section">
+          <div class="section-header">
+            <div>
+              <h2>Current Schedules</h2>
+
+              <p>Scheduled subject lessons</p>
+            </div>
+          </div>
+
+          <div id="scheduleList"></div>
+        </div>
+      </section>
+
+      <!-- REPORTS -->
+
+      <section id="reports" class="page-section">
+        <div class="section-title">
+          <h2>Reports</h2>
+
+          <p>Overview of your LMS data.</p>
+        </div>
+
+        <div class="dashboard-cards">
+          <div class="dashboard-card">
+            <span class="card-title"> Students </span>
+
+            <h3 id="reportStudents">0</h3>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Faculty </span>
+
+            <h3 id="reportFaculty">0</h3>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Courses </span>
+
+            <h3 id="reportCourses">0</h3>
+          </div>
+
+          <div class="dashboard-card">
+            <span class="card-title"> Sections </span>
+
+            <h3 id="reportSections">0</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANNOUNCEMENTS -->
+      <section id="announcements" class="page-section">
+        <div class="section-header">
+          <div>
+            <h2>Announcements</h2>
+            <p>Publish announcements for faculty, students, or both.</p>
+          </div>
+        </div>
+
+        <div class="announcement-layout">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Create Announcement</h3>
+                <p>Send an announcement to selected users.</p>
+              </div>
+            </div>
+
+            <form id="adminAnnouncementForm">
+              <div class="form-group">
+                <label for="adminAnnouncementTitle"> Announcement Title </label>
+
+                <input
+                  type="text"
+                  id="adminAnnouncementTitle"
+                  placeholder="Enter announcement title"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="adminAnnouncementMessage"> Message </label>
+
+                <textarea
+                  id="adminAnnouncementMessage"
+                  rows="6"
+                  placeholder="Write your announcement..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="adminAnnouncementAudience"> Audience </label>
+
+                <select id="adminAnnouncementAudience" required>
+                  <option value="">Select Audience</option>
+
+                  <option value="faculty">Faculty Only</option>
+
+                  <option value="students">Students Only</option>
+
+                  <option value="both">Faculty & Students</option>
+                </select>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-button">
+                  Publish Announcement
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Published Announcements</h3>
+                <p>Manage announcements published by the administrator.</p>
+              </div>
+            </div>
+
+            <div id="adminAnnouncementList">
+              <div class="empty-message">No announcements yet.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

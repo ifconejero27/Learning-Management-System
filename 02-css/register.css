@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #dcd7c9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.register-container {
+  width: 450px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(44, 57, 48, 0.12);
+}
+
+.register-form h1 {
+  text-align: center;
+  color: #2c3930;
+  margin-bottom: 10px;
+}
+
+.register-form p {
+  text-align: center;
+  color: #69736b;
+  margin-bottom: 30px;
+}
+
+.register-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.register-form input {
+  padding: 14px 16px;
+  border: 1px solid #dcd7c9;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+  color: #2c3930;
+}
+
+.register-form input:focus {
+  border-color: #a27b5c;
+  box-shadow: 0 0 8px rgba(162, 123, 92, 0.2);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "⬇";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 18px;
+  color: #69736b;
+}
+
+.register-form select {
+  width: 100%;
+  padding: 14px 45px 14px 16px;
+  border: 1px solid #dcd7c9;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  appearance: none;
+  background: #ffffff;
+  color: #69736b;
+  transition: 0.3s;
+}
+
+.register-form select:has(option:checked:not([value=""])) {
+  color: #2c3930;
+}
+
+.register-form select:focus {
+  border-color: #a27b5c;
+  box-shadow: 0 0 8px rgba(162, 123, 92, 0.2);
+}
+
+.register-form select option {
+  color: #2c3930;
+}
+
+.register-form select option:first-child {
+  color: #69736b;
+}
+
+.register-form input::placeholder {
+  color: #69736b;
+}
+
+.register-form button {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: #a27b5c;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-form button:hover {
+  background: #8f694e;
+}
+
+.login-link {
+  margin-top: 25px;
+}
+
+.login-link a {
+  color: #a27b5c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}

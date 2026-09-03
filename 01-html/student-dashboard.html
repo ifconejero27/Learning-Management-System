@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Student Dashboard</title>
+
+    <link rel="stylesheet" href="../02-css/student-dashboard.css" />
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+      <div class="logo">
+        <h2>LMS</h2>
+
+        <span> Student Portal </span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="dashboard">
+          Dashboard
+        </a>
+
+        <a href="#" class="nav-item" data-section="activities"> Activities </a>
+
+        <a href="#" class="nav-item" data-section="grades"> Grades </a>
+
+        <a href="#" class="nav-item" data-section="attendance"> Attendance </a>
+
+        <a href="#" class="nav-item" data-section="schedule"> Schedule </a>
+
+        <a href="#" class="nav-item" data-section="announcements">
+          Announcements
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="#" class="nav-item" id="logoutButton"> Logout </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+      <!-- TOPBAR -->
+
+      <header class="topbar">
+        <div class="page-title">
+          <h1 id="pageTitle">Student Dashboard</h1>
+
+          <p id="pageSubtitle">Welcome to your student portal.</p>
+        </div>
+
+        <div class="profile">
+          <div class="profile-info">
+            <strong id="studentName"> Student </strong>
+
+            <span id="studentCourse"> Student </span>
+          </div>
+
+          <div class="profile-avatar" id="studentAvatar">ST</div>
+        </div>
+      </header>
+
+      <!--  DASHBOARD -->
+
+      <section id="dashboard" class="page-section active-section">
+        <div class="welcome-section">
+          <div class="student-welcome-content">
+            <div class="student-welcome-text">
+              <span class="welcome-label"> STUDENT PORTAL </span>
+
+              <h2>
+                Welcome back,
+
+                <span id="welcomeStudentName"> Student </span>
+              </h2>
+
+              <p>Here's an overview of your academic activities.</p>
+            </div>
+
+            <div class="student-academic-info">
+              <div class="academic-info-item">
+                <span> Name </span>
+
+                <strong id="dashboardStudentName"> — </strong>
+              </div>
+
+              <div class="academic-info-item">
+                <span> Year Level </span>
+
+                <strong id="dashboardStudentYear"> — </strong>
+              </div>
+
+              <div class="academic-info-item">
+                <span> Course </span>
+
+                <strong id="dashboardStudentCourse"> — </strong>
+              </div>
+
+              <div class="academic-info-item">
+                <span> Section </span>
+
+                <strong id="dashboardStudentSection"> — </strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLICKABLE DASHBOARD CARDS -->
+
+        <div class="student-cards">
+          <button
+            type="button"
+            class="student-card"
+            data-card-section="activities"
+            data-card-filter=""
+          >
+            <span class="card-label"> My Subjects </span>
+
+            <h3 id="mySubjectsCount">0</h3>
+
+            <p>Currently enrolled</p>
+          </button>
+
+          <button
+            type="button"
+            class="student-card pending-card"
+            data-card-section="activities"
+            data-card-filter="pending"
+          >
+            <span class="card-label"> Pending Activities </span>
+
+            <h3 id="pendingActivitiesCount">0</h3>
+
+            <p>Activities to submit</p>
+          </button>
+
+          <button
+            type="button"
+            class="student-card"
+            data-card-section="activities"
+            data-card-filter="upcoming"
+          >
+            <span class="card-label"> Upcoming Deadlines </span>
+
+            <h3 id="upcomingDeadlinesCount">0</h3>
+
+            <p>Due within 7 days</p>
+          </button>
+
+          <button
+            type="button"
+            class="student-card"
+            data-card-section="announcements"
+          >
+            <span class="card-label"> Announcements </span>
+
+            <h3 id="studentAnnouncementsCount">0</h3>
+
+            <p>Recent announcements</p>
+          </button>
+        </div>
+
+        <!-- DASHBOARD CONTENT -->
+
+        <div class="student-dashboard-grid">
+          <div class="student-section">
+            <div class="section-header">
+              <div>
+                <h2>Upcoming Activities</h2>
+
+                <p>Activities that need your attention.</p>
+              </div>
+
+              <a href="#" class="section-link" data-section="activities">
+                View All
+              </a>
+            </div>
+
+            <div id="upcomingActivitiesList" class="student-activity-list">
+              <div class="empty-message">No upcoming activities.</div>
+            </div>
+          </div>
+
+          <div class="student-section">
+            <div class="section-header">
+              <div>
+                <h2>Today's Schedule</h2>
+
+                <p>Your classes for today.</p>
+              </div>
+
+              <a href="#" class="section-link" data-section="schedule">
+                View Schedule
+              </a>
+            </div>
+
+            <div id="todayScheduleList" class="schedule-list">
+              <div class="empty-message">No classes scheduled today.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="student-section">
+          <div class="section-header">
+            <div>
+              <h2>Recent Announcements</h2>
+
+              <p>Important announcements from your faculty.</p>
+            </div>
+
+            <a href="#" class="section-link" data-section="announcements">
+              View All
+            </a>
+          </div>
+
+          <div id="recentAnnouncementsList" class="announcement-list">
+            <div class="empty-message">No announcements yet.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ACTIVITIES -->
+
+      <section id="activities" class="page-section">
+        <div class="section-title">
+          <h2>Activities</h2>
+
+          <p>
+            View and submit your quizzes, assignments, projects, and other
+            academic activities.
+          </p>
+        </div>
+
+        <div class="student-section">
+          <div class="activity-toolbar">
+            <div class="form-group">
+              <label for="activitySubjectFilter"> Subject </label>
+
+              <select id="activitySubjectFilter">
+                <option value="">All Subjects</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="activityStatusFilter"> Status </label>
+
+              <select id="activityStatusFilter">
+                <option value="">All Activities</option>
+
+                <option value="pending">Pending</option>
+
+                <option value="submitted">Submitted</option>
+
+                <option value="graded">Graded</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="studentActivityList" class="student-activity-list">
+            <div class="empty-message">No activities available.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GRADES -->
+
+      <section id="grades" class="page-section">
+        <div class="section-title">
+          <h2>My Grades</h2>
+
+          <p>View your complete scores and grades for each grading period.</p>
+        </div>
+
+        <div class="student-grades-container" id="studentGradesContainer">
+          <div class="student-grade-table-scroll">
+            <table class="student-grade-table" id="studentGradeTable"></table>
+          </div>
+        </div>
+      </section>
+
+      <!--  ATTENDANCE -->
+
+      <section id="attendance" class="page-section">
+        <div class="section-title">
+          <h2>Attendance</h2>
+
+          <p>View your attendance record for each subject.</p>
+        </div>
+
+        <div class="student-section">
+          <div id="studentAttendanceList" class="attendance-list">
+            <div class="empty-message">No attendance records available.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCHEDULE -->
+
+      <section id="schedule" class="page-section">
+        <div class="section-title">
+          <h2>My Schedule</h2>
+
+          <p>View your weekly class schedule.</p>
+        </div>
+
+        <div class="student-section">
+          <div id="studentScheduleList" class="schedule-list">
+            <div class="empty-message">No schedule available.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANNOUNCEMENTS -->
+
+      <section id="announcements" class="page-section">
+        <div class="section-title">
+          <h2>Announcements</h2>
+
+          <p>Important announcements from your faculty.</p>
+        </div>
+
+        <div class="student-section">
+          <div id="studentAnnouncementList" class="announcement-list">
+            <div class="empty-message">No announcements available.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../03-js/student-dashboard.js"></script>
+  </body>
+</html>
