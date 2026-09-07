@@ -111,4 +111,4 @@ Announcements can be created and displayed based on the intended audience and ac
 
 The system maintains the user's login session through browser `localStorage` until the user logs out.
 
-[Visit My Learning Management System](https://ifconejero27.github.io/Learning-Management-System/).
+[Visit My Learning Management System](https://ifconejero27.github.io/Learning-Management-System/index.html).
